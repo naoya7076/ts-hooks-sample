@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const App: React.FC = () => {
     const [name, setName] = useState('serval')
     const [type, setType] = useState('friends')
+
+    useEffect(()=>{
+        document.title = `${name} is ${type}`
+    }, [name, type])
 
     function handleChangeName(e: React.ChangeEvent<HTMLInputElement>){
         setName(e.target.value);
@@ -19,3 +23,5 @@ const App: React.FC = () => {
         </div>
     )
 }
+
+export default App
