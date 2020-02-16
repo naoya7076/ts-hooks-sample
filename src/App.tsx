@@ -10,8 +10,8 @@ const App: React.FC = () => {
           <WithoutHooks />
         </div>
       <div style={{ gridColumn: '1/2' }}>
-        <div>クラスコンポーネント版</div>
-        <WithoutHooks />
+        <div>React Hooks版</div>
+        <WithHooks />
       </div>
     </div>
   )
