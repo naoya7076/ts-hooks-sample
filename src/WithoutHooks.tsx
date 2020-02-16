@@ -8,6 +8,14 @@ class WithoutHooks extends React.Component<{}, {name:string;type:string}>{
         this.handleChangeRace = this.handleChangeRace.bind(this);
     }
 
+    componentDidMount(){
+        document.title = `${this.state.name} is ${this.state.type}`
+    }
+
+    componentDidUpdate(){
+        document.title = `${this.state.name} is ${this.state.type}`
+    }
+
     handleChangeName(e: React.ChangeEvent<HTMLInputElement>){
         this.setState({ name: e.target.value });
     }
@@ -20,7 +28,7 @@ class WithoutHooks extends React.Component<{}, {name:string;type:string}>{
         return (
             <div>
                 <input value={this.state.name} onChange={this.handleChangeName} />
-                <input value={this.state.name} onChange={this.handleChangeRace} />
+                <input value={this.state.type} onChange={this.handleChangeRace} />
             </div>
         );
     }
