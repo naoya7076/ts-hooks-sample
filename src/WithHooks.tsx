@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
+const useInput = (defaultValue: string) =>{
+    const [value, setValue] = useState(defaultValue);
+    function onChange(e:React.ChangeEvent<HTMLInputElement>) {
+        setValue(e.target.value);
+    }
+    return {value, onChange};
+}
+
 const App: React.FC = () => {
-    const [name, setName] = useState('serval')
-    const [type, setType] = useState('friends')
+    const name = useInput('serval')
+    const type = useInput('friends')
 
     useEffect(()=>{
-        document.title = `${name} is ${type}`
+        document.title = `${name.value} is ${type.value}`
     }, [name, type])
-
-    function handleChangeName(e: React.ChangeEvent<HTMLInputElement>){
-        setName(e.target.value);
-    }
-
-    function handleChangeRace(e: React.ChangeEvent<HTMLInputElement>){
-        setType(e.target.value);
-    }
 
     return (
         <div>
-            <input value={name} onChange={handleChangeName} />
-            <input value={type} onChange={handleChangeRace} />
+            <input {...name} />
+            <input {...type} />
         </div>
     )
 }
